@@ -1,0 +1,43 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31912.275
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cards.API", "Cards.API\Cards.API.csproj", "{0386460D-AE8B-4AB3-8595-5833E9E1BBD9}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cards.Model", "Cards.Model\Cards.Model.csproj", "{7AB64853-E198-444A-9E13-6EF98D0C22C3}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CreateSQLiteDataBase", "CreateSQLiteDataBase\CreateSQLiteDataBase.csproj", "{372312E3-1EA4-4D1E-A036-28C2C12C2FA0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModelMinimalValidator", "MinimalValidator\ModelMinimalValidator.csproj", "{61FF298B-DAD3-4278-82F4-FD648247F09A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0386460D-AE8B-4AB3-8595-5833E9E1BBD9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0386460D-AE8B-4AB3-8595-5833E9E1BBD9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0386460D-AE8B-4AB3-8595-5833E9E1BBD9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0386460D-AE8B-4AB3-8595-5833E9E1BBD9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7AB64853-E198-444A-9E13-6EF98D0C22C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7AB64853-E198-444A-9E13-6EF98D0C22C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7AB64853-E198-444A-9E13-6EF98D0C22C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7AB64853-E198-444A-9E13-6EF98D0C22C3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{372312E3-1EA4-4D1E-A036-28C2C12C2FA0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{372312E3-1EA4-4D1E-A036-28C2C12C2FA0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{372312E3-1EA4-4D1E-A036-28C2C12C2FA0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{372312E3-1EA4-4D1E-A036-28C2C12C2FA0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{61FF298B-DAD3-4278-82F4-FD648247F09A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{61FF298B-DAD3-4278-82F4-FD648247F09A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{61FF298B-DAD3-4278-82F4-FD648247F09A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{61FF298B-DAD3-4278-82F4-FD648247F09A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4D035F54-DF9A-4E38-A3F3-E87BAD4D87BF}
+	EndGlobalSection
+EndGlobal
