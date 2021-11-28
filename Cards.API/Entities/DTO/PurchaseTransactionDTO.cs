@@ -6,7 +6,6 @@
         public int ExpirationDate { get; set; }
         public int CVV { get; set; }
         public string BusinessName { get; set; }
-        public DateTime TransactionDate { get; set; }
         public decimal Amount { get; set; }
     }
 }
