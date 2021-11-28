@@ -6,11 +6,15 @@ namespace Cards.Infrastructure.Interfaces
     {
         Task<ResponseDTO> Add(CardDTO data);
 
-        Task<ResponseDTO> GetAll();
+        Task<ResponseDTO> GetAllCards();
 
         Task<ResponseDTO> GetByCardNumber(long cardNumber);
 
         Task<ResponseDTO> PurchaseTransaction(PurchaseTransactionDTO data);
+
+        Task<ResponseDTO> GetAllFees();
+
+        Task<ResponseDTO> UpdateFeePayment(FeePaymentDTO data);
 
         bool ValidateExpirationDate(int expirationDate);
     }

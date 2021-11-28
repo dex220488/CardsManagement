@@ -1,5 +1,4 @@
-﻿// See https://aka.ms/new-console-template for more information
-using Cards.Model;
+﻿using Cards.Model;
 
 Console.WriteLine("Starting DataBase Creation!");
 var dbName = "CardDb.db";
@@ -24,8 +23,8 @@ feePayments.Add(new Cards.Model.FeePayment()
 {
     Description = "Fee Payment #2",
     CurrentFee = 50.45M,
-    GeneratedFeeDateTime = DateTime.Now
-});
+    GeneratedFeeDateTime = DateTime.Now.AddHours(-1)
+}); ;
 
 var purchaseTransactions = new List<Cards.Model.PurchaseTransaction>();
 purchaseTransactions.Add(new Cards.Model.PurchaseTransaction()
@@ -56,3 +55,36 @@ dbContext.Cards.Add(new Card()
 dbContext.SaveChanges();
 
 Console.WriteLine("Demo data inserted");
+
+var dbPath = $"{System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase)}/".Substring(6);
+var targetPath = $"{Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory)}/CardsManagementDB_DiegoCaicedo";
+
+if (Directory.Exists(targetPath))
+{
+    System.IO.DirectoryInfo targetDirectory = new DirectoryInfo(targetPath);
+    foreach (FileInfo file in targetDirectory.GetFiles())
+    {
+        file.Delete();
+    }
+    foreach (DirectoryInfo dir in targetDirectory.GetDirectories())
+    {
+        dir.Delete(true);
+    }
+}
+
+Directory.CreateDirectory(targetPath);
+DirectoryInfo directory = new DirectoryInfo(dbPath);
+foreach (var item in directory.GetFiles("CardDb*.*"))
+{
+    File.Copy(item.FullName, $"{targetPath}/{item.Name}");
+}
+
+Console.WriteLine($"Connection String to Use: {targetPath}/CardDb.db");
+
+Console.Write("Do you want to close the installation? (y, n): ");
+char response = Console.ReadLine()[0];
+
+if (response == 'y' || response == 'Y')
+{
+    Environment.Exit(0);
+}

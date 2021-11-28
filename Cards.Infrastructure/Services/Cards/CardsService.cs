@@ -14,6 +14,11 @@ namespace Cards.Infrastructure.Services.Cards
             _db = db;
         }
 
+        /// <summary>
+        /// Creates a new card in the module
+        /// </summary>
+        /// <param name="data">Card Information</param>
+        /// <returns>Generic ResponseDTO with errors if any</returns>
         public async Task<ResponseDTO> Add(CardDTO data)
         {
             var response = new ResponseDTO();
@@ -49,7 +54,11 @@ namespace Cards.Infrastructure.Services.Cards
             return response;
         }
 
-        public async Task<ResponseDTO> GetAll()
+        /// <summary>
+        /// Get the complete list of cards
+        /// </summary>
+        /// <returns>List of CardDTO inside Response Property. Generic ResponseDTO with errors if any</returns>
+        public async Task<ResponseDTO> GetAllCards()
         {
             var response = new ResponseDTO();
             try
@@ -73,6 +82,11 @@ namespace Cards.Infrastructure.Services.Cards
             return response;
         }
 
+        /// <summary>
+        /// Get information from a specific card
+        /// </summary>
+        /// <param name="cardNumber">Card number</param>
+        /// <returns>CardDTO inside Response Property. Generic ResponseDTO with errors if any</returns>
         public async Task<ResponseDTO> GetByCardNumber(long cardNumber)
         {
             var response = new ResponseDTO();
@@ -104,6 +118,11 @@ namespace Cards.Infrastructure.Services.Cards
             return response;
         }
 
+        /// <summary>
+        /// Makes a purchase and updates card balance
+        /// </summary>
+        /// <param name="data"></param>
+        /// <returns>Generic ResponseDTO with errors if any</returns>
         public async Task<ResponseDTO> PurchaseTransaction(PurchaseTransactionDTO data)
         {
             var response = new ResponseDTO();
@@ -173,6 +192,11 @@ namespace Cards.Infrastructure.Services.Cards
             return response;
         }
 
+        /// <summary>
+        /// Validates if a card exists
+        /// </summary>
+        /// <param name="cardInfo">Card information</param>
+        /// <returns>true if exists or false if it doesn't exist</returns>
         private async Task<bool> ValidateExistingCard(PurchaseTransactionDTO cardInfo)
         {
             var sql = "SELECT * FROM Cards WHERE CardNumber = @CardNumber AND ExpirationDate = @ExpirationDate AND CVV = @CVV ";
@@ -189,6 +213,12 @@ namespace Cards.Infrastructure.Services.Cards
                 return true;
         }
 
+        /// <summary>
+        /// Validates if a card will be overdrawn for a new transaction
+        /// </summary>
+        /// <param name="cardNumber">Card number</param>
+        /// <param name="transactionAmount">Amount of new transaction</param>
+        /// <returns>true if it is overdrawn</returns>
         private async Task<bool> ValidateCreditIsOverdrawn(long cardNumber, decimal transactionAmount)
         {
             bool isOverdrawn = false;
@@ -204,6 +234,11 @@ namespace Cards.Infrastructure.Services.Cards
             return isOverdrawn;
         }
 
+        /// <summary>
+        /// Validates an expiration date
+        /// </summary>
+        /// <param name="expirationDate">Expiration date</param>
+        /// <returns>true if it is a valid value</returns>
         public bool ValidateExpirationDate(int expirationDate)
         {
             int.TryParse(expirationDate.ToString()[..4], out int year);
@@ -231,6 +266,90 @@ namespace Cards.Infrastructure.Services.Cards
             }
 
             return isValid;
+        }
+
+        /// <summary>
+        /// Get all fee payments
+        /// </summary>
+        /// <returns>List of FeePaymentDTO inside Response Property. Generic ResponseDTO with errors if any</returns>
+        public async Task<ResponseDTO> GetAllFees()
+        {
+            var response = new ResponseDTO();
+            try
+            {
+                var sql = "SELECT * from FeePayments";
+                var data = await _db.QueryAsync<FeePaymentDTO>(sql);
+                response.Response = data;
+            }
+            catch (Exception ex)
+            {
+                response.HasError = true;
+                response.ErrorMessage = $"ErrorMessage => {ex.Message}";
+                if (ex.InnerException != null)
+                {
+                    response.ErrorMessage = $"{response.ErrorMessage} :: InnerException => {ex.InnerException.Message}";
+                }
+
+                response.ErrorMessage = $"{response.ErrorMessage} :: StackTrace => {ex.StackTrace}";
+            }
+
+            return response;
+        }
+
+        /// <summary>
+        /// Update a fee payment
+        /// </summary>
+        /// <param name="data">Data to be updated</param>
+        /// <returns>Generic ResponseDTO with errors if any</returns>
+        public async Task<ResponseDTO> UpdateFeePayment(FeePaymentDTO data)
+        {
+            var response = new ResponseDTO();
+            try
+            {
+                await _db.OpenAsync().ConfigureAwait(false);
+                using (var transaction = await _db.BeginTransactionAsync())
+                {
+                    var sql = "INSERT INTO HistoricalFeePayments(" +
+                            "FeePaymentId, Fee, GeneratedDateTime" +
+                          ") VALUES (" +
+                            "@FeeePaymentId,@Fee,@GeneratedDateTime" +
+                          ");";
+
+                    await _db.ExecuteAsync(sql, new
+                    {
+                        FeeePaymentId = data.Id,
+                        Fee = data.PreviousFee,
+                        GeneratedDateTime = data.GeneratedFeeDateTime
+                    });
+
+                    sql = "UPDATE FeePayments " +
+                           "SET CurrentFee = @CurrentFee, GeneratedFeeDateTime =  @GeneratedFeeDateTime" +
+                         " WHERE " +
+                           "Id = @Id;";
+
+                    await _db.ExecuteAsync(sql, new
+                    {
+                        CurrentFee = data.CurrentFee,
+                        GeneratedFeeDateTime = DateTime.Now,
+                        Id = data.Id
+                    });
+
+                    transaction.Commit();
+                }
+            }
+            catch (Exception ex)
+            {
+                response.HasError = true;
+                response.ErrorMessage = $"ErrorMessage => {ex.Message}";
+                if (ex.InnerException != null)
+                {
+                    response.ErrorMessage = $"{response.ErrorMessage} :: InnerException => {ex.InnerException.Message}";
+                }
+
+                response.ErrorMessage = $"{response.ErrorMessage} :: StackTrace => {ex.StackTrace}";
+            }
+
+            return response;
         }
     }
 }

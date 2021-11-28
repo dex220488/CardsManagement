@@ -11,7 +11,16 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CreateSQLiteDataBase", "Cre
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ModelMinimalValidator", "MinimalValidator\ModelMinimalValidator.csproj", "{61FF298B-DAD3-4278-82F4-FD648247F09A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cards.Infrastructure", "Cards.Infrastructure\Cards.Infrastructure.csproj", "{4A6BFCA9-7EAC-45A2-A795-1FA634ACCDD5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cards.Infrastructure", "Cards.Infrastructure\Cards.Infrastructure.csproj", "{4A6BFCA9-7EAC-45A2-A795-1FA634ACCDD5}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UniversalFeesExchangeProcess", "UniversalFeesExchangeProcess\UniversalFeesExchangeProcess.csproj", "{F9632EB5-6DC7-4FC2-9957-435AF32E6BAE}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GenerateNewBearerToken", "GenerateNewBearerToken\GenerateNewBearerToken.csproj", "{7E79D8CC-5114-4271-9167-D8E5C886F3DE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{8B6407E8-196C-48F2-8A62-932C65E57CFA}"
+	ProjectSection(SolutionItems) = preProject
+		Readme.md = Readme.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +48,14 @@ Global
 		{4A6BFCA9-7EAC-45A2-A795-1FA634ACCDD5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4A6BFCA9-7EAC-45A2-A795-1FA634ACCDD5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4A6BFCA9-7EAC-45A2-A795-1FA634ACCDD5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F9632EB5-6DC7-4FC2-9957-435AF32E6BAE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F9632EB5-6DC7-4FC2-9957-435AF32E6BAE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F9632EB5-6DC7-4FC2-9957-435AF32E6BAE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F9632EB5-6DC7-4FC2-9957-435AF32E6BAE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7E79D8CC-5114-4271-9167-D8E5C886F3DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7E79D8CC-5114-4271-9167-D8E5C886F3DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7E79D8CC-5114-4271-9167-D8E5C886F3DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7E79D8CC-5114-4271-9167-D8E5C886F3DE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
