@@ -1,4 +1,4 @@
-﻿namespace Cards.API.Entities.DTO
+﻿namespace Cards.Infrastructure.Entities.DTO
 {
     public class ResponseDTO
     {

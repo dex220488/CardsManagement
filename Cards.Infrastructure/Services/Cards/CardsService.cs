@@ -1,9 +1,9 @@
-﻿using Cards.API.Entities.DTO;
-using Cards.API.Interfaces;
+﻿using Cards.Infrastructure.Entities.DTO;
+using Cards.Infrastructure.Interfaces;
 using Dapper;
 using Microsoft.Data.Sqlite;
 
-namespace Cards.API.Services.Cards
+namespace Cards.Infrastructure.Services.Cards
 {
     public class CardsService : ICardService
     {

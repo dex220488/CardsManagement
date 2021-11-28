@@ -23,9 +23,25 @@ namespace Cards.Model
                 entity.HasKey(k => k.CardNumber);
             });
             modelBuilder.Entity<Card>().HasMany(f => f.PurchaseTransactions).WithOne();
+            modelBuilder.Entity<Card>().HasMany(f => f.FeePayments).WithOne();
 
             modelBuilder.Entity<PurchaseTransaction>().ToTable("PurchaseTransactions", "dbo");
             modelBuilder.Entity<PurchaseTransaction>(entity =>
+            {
+                entity.HasKey(k => k.Id);
+                entity.Property(x => x.Id).ValueGeneratedOnAdd();
+            });
+
+            modelBuilder.Entity<FeePayment>().ToTable("FeePayments", "dbo");
+            modelBuilder.Entity<FeePayment>(entity =>
+            {
+                entity.HasKey(k => k.Id);
+                entity.Property(x => x.Id).ValueGeneratedOnAdd();
+            });
+            modelBuilder.Entity<FeePayment>().HasMany(f => f.HistoricalFeePayments).WithOne();
+
+            modelBuilder.Entity<HistoricalFeePayment>().ToTable("HistoricalFeePayments", "dbo");
+            modelBuilder.Entity<HistoricalFeePayment>(entity =>
             {
                 entity.HasKey(k => k.Id);
                 entity.Property(x => x.Id).ValueGeneratedOnAdd();
@@ -44,6 +60,7 @@ namespace Cards.Model
         public decimal Balance { get; set; }
 
         public List<PurchaseTransaction> PurchaseTransactions { get; set; }
+        public List<FeePayment> FeePayments { get; set; }
     }
 
     public class PurchaseTransaction
@@ -52,5 +69,22 @@ namespace Cards.Model
         public string BusinessName { get; set; }
         public DateTime TransactionDate { get; set; }
         public decimal Amount { get; set; }
+    }
+
+    public class FeePayment
+    {
+        public long Id { get; set; }
+        public string Description { get; set; }
+        public decimal CurrentFee { get; set; }
+        public DateTime GeneratedFeeDateTime { get; set; }
+
+        public List<HistoricalFeePayment> HistoricalFeePayments { get; set; }
+    }
+
+    public class HistoricalFeePayment
+    {
+        public long Id { get; set; }
+        public decimal Fee { get; set; }
+        public DateTime GeneratedDateTime { get; set; }
     }
 }

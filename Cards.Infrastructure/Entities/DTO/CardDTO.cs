@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Cards.API.Entities.DTO
+namespace Cards.Infrastructure.Entities.DTO
 {
     public class CardDTO
     {

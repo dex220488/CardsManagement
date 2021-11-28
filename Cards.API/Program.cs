@@ -1,6 +1,6 @@
-using Cards.API.Entities.DTO;
-using Cards.API.Interfaces;
-using Cards.API.Services.Cards;
+using Cards.Infrastructure.Entities.DTO;
+using Cards.Infrastructure.Interfaces;
+using Cards.Infrastructure.Services.Cards;
 using Microsoft.Data.Sqlite;
 using ModelMinimalValidator;
 

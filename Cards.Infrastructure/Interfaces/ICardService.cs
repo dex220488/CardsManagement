@@ -1,6 +1,6 @@
-﻿using Cards.API.Entities.DTO;
+﻿using Cards.Infrastructure.Entities.DTO;
 
-namespace Cards.API.Interfaces
+namespace Cards.Infrastructure.Interfaces
 {
     public interface ICardService
     {

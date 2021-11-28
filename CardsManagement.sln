@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cards.Model", "Cards.Model\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CreateSQLiteDataBase", "CreateSQLiteDataBase\CreateSQLiteDataBase.csproj", "{372312E3-1EA4-4D1E-A036-28C2C12C2FA0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModelMinimalValidator", "MinimalValidator\ModelMinimalValidator.csproj", "{61FF298B-DAD3-4278-82F4-FD648247F09A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ModelMinimalValidator", "MinimalValidator\ModelMinimalValidator.csproj", "{61FF298B-DAD3-4278-82F4-FD648247F09A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cards.Infrastructure", "Cards.Infrastructure\Cards.Infrastructure.csproj", "{4A6BFCA9-7EAC-45A2-A795-1FA634ACCDD5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{61FF298B-DAD3-4278-82F4-FD648247F09A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{61FF298B-DAD3-4278-82F4-FD648247F09A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{61FF298B-DAD3-4278-82F4-FD648247F09A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4A6BFCA9-7EAC-45A2-A795-1FA634ACCDD5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4A6BFCA9-7EAC-45A2-A795-1FA634ACCDD5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4A6BFCA9-7EAC-45A2-A795-1FA634ACCDD5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4A6BFCA9-7EAC-45A2-A795-1FA634ACCDD5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
